@@ -10,12 +10,15 @@
 
 Web Content Services:
 - Apache HTTP Server aka. apache2
+    - [How to Install the Apache Web Server on Ubuntu 20.04](https://www.digitalocean.com/community/tutorials/how-to-install-the-apache-web-server-on-ubuntu-20-04)
 - NGINX
+    - [How to Install Nginx on Ubuntu 20.04](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-20-04)
 
 Useful commands:
 ```bash
 systemctl status/restart/start/stop servicename
 nmap -A -Pn hostname/ip
+curl hostname/ip
 ```
 
 Web Server Error Codes:
@@ -137,14 +140,18 @@ VPN connections encrypt and secure all of your network traffic, not just the HTT
     - Each frontend keyword is followed by a label, such as www.mysite.com, to differentiate it from others.
 
 **Resources**
-- [haproxy - the four essential sections of an haproxy configuration](https://www.haproxy.com/blog/the-four-essential-sections-of-an-haproxy-configuration/)
+- [HAProxy - The Four Essential Sections of an HAProxy Configuration](https://www.haproxy.com/blog/the-four-essential-sections-of-an-haproxy-configuration/)
 - [DigitalOcean - Intro to HAProxy and LB Concepts](https://www.digitalocean.com/community/tutorials/an-introduction-to-haproxy-and-load-balancing-concepts)
 
 ### Health Monitoring & Fault Tolerance:
 - `ssh` and check things?
 - `cron` job running a check report?
+- [configure and view `haproxy` logs](https://www.haproxy.com/blog/introduction-to-haproxy-logging/)
 - [`haproxy` `stats` page](https://www.haproxy.com/blog/exploring-the-haproxy-stats-page/)
-    - `stats uri /haproxy?stats` needs to be configured in `frontend`
+    - check port bind is open on firewall (Security Groups)
+    - `stats uri ` of `/haproxy?stats` or `/stats` needs to be configured in `frontend`
+    - access with `EIP:port/uri`
+- [managing hosts with `haproxy` via command line](https://serverfault.com/questions/249316/how-can-i-remove-balanced-node-from-haproxy-via-command-line)
 
 Useful commands:
 - `ping hostname`
@@ -156,7 +163,7 @@ Useful commands:
 
 `source/ip hash` is an allocation strategy that reconnects you with the server you were communicating with.
 
-But what about those shopping carts?  How about remembering you log on session?
+How about remembering you logged on?
 
 #### JSON Web Tokens
 
@@ -173,6 +180,11 @@ But what about those shopping carts?  How about remembering you log on session?
 - [openid - what is it?](https://openid.net/connect/)
 - [auth0 - using openid connect protocol](https://auth0.com/docs/authenticate/protocols/openid-connect-protocol)
 
+### Dashboards
+
+- [Grafana](https://grafana.com/grafana/dashboards/12693-haproxy-2-full/)
+- [Datadogs](https://www.datadoghq.com/dashboards/haproxy-dashboard/)
+
 ### Case Studies
 
 #### repl.it
@@ -184,3 +196,8 @@ But what about those shopping carts?  How about remembering you log on session?
 
 - https://netflixtechblog.com/netflix-edge-load-balancing-695308b5548c
 - https://netflixtechblog.com/netflix-shares-cloud-load-balancing-and-failover-tool-eureka-c10647ef95e5
+
+### Vulnerabilities
+
+- [HTTP Request Smuggling in HAProxy](https://portswigger.net/daily-swig/amp/http-request-smuggling-bug-patched-in-haproxy)
+    - [CVE Notice](https://www.mail-archive.com/haproxy@formilux.org/msg43229.html)

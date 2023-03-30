@@ -1,51 +1,40 @@
 # Project 5 Rubric
 
-/ 21
+/ 18
 
 ## Repo contents ( / 6)
 
-- `README.md`
+- `README-CD.md` (and `README-CI.md` from P4)
 - `website` folder with website pages
 - `Dockerfile`
-- GitHub action yml file in `.github/workflows`
-- webhook related config files
+- GitHub action `yml` file in `.github/workflows`
+- `deployment` folder with:
   - container restart script
-  - webhook definition file
+  - `hook` definition file
 
-## docker basics + Dockerfile ( / 5)
+## Semantic Versioning ( / 3)
 
-- Project Overview
-- Run project locally
-  - how you installed docker + dependencies (WSL2, for example)
-  - how to build the container
-  - how to run the container
-  - how to view the project (open a browser...go to ip and port...)
-
-## GitHub Actions and DockerHub ( / 4)
-
-- Create DockerHub public repo
-  - process to create
-- How to authenticate with DockerHub via CLI using Dockhub credentials
-  - what credentials would you recommend providing?
-- Configuring GitHub Secrets
-  - what credentials are needed - DockerHub credentials (do not state your credentials)
-  - set secrets and secret names
+- CD Project Overview
+  - (what are you doing, why, what tools)
+- How to generate a `tag` in `git` / GitHub
 - Behavior of GitHub workflow
   - what does it do and when
-  - variables to change (repository, etc.)
 
-## Deployment ( / 4)
+## Deployment ( / 8)
 
+- How to install Docker to your instance
 - Container restart script
-  - what it does
-- Webhook task definition file
-  - what it does
-- Setting up a webhook on the server
-  - How you created you own listener
-  - How you installed and are running the [webhook on GitHub](https://github.com/adnanh/webhook)
-- Setting up a notifier in GitHub or DockerHub
+  - Justification & description of what it does
+  - Where it should be on server
+- Setting up a `webhook` on the server
+  - How to install adnanh's `webhook` to server
+  - How to start the `webhook`
+    - since our instance's reboot, we need to handle this
+- `webhook` task definition file
+  - Description of what it does
+  - Where it should be on server
+- How to configure GitHub OR DockerHub to message the listener 
 
-## Diagramming ( / 2)
+## Diagramming ( / 1)
 
-- Logically diagrammed steps for continuous integration workflow
 - Logically diagrammed steps for continuous deployment workflow
